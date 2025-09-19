@@ -23,18 +23,28 @@ export async function seed() {
       name: "React.js",
       category: "Frontend",
       proficiency: "Expert",
+      isTopSkill: true,
+      level: "95",
+    },
+    {
+      name: "JavaScript (ES6+)",
+      category: "Frontend",
+      proficiency: "Expert",
+      isTopSkill: true,
       level: "90",
     },
     {
       name: "Node.js",
       category: "Backend",
       proficiency: "Expert",
+      isTopSkill: true,
       level: "90",
     },
     {
       name: "AWS",
       category: "Cloud",
       proficiency: "Intermediate",
+      isTopSkill: true,
       level: "75",
     },
 
@@ -291,26 +301,56 @@ export async function seed() {
     {
       title: "Mastering React Performance",
       summary:
-        "Performance optimization in React apps is critical for creating smooth user experiences. In this article, I explore techniques such as memoization, code-splitting, lazy loading, and fine-tuning renders.",
+        "Performance optimization in React apps is critical for creating smooth user experiences. Techniques covered: memoization, code-splitting, lazy loading, and reducing unnecessary renders.",
       publishedDate: new Date("2024-08-01"),
-      tags: ["React", "Optimization", "Frontend"],
-      type: "Tech",
+      url: "/blog/mastering-react-performance",
+      tags: ["React", "Performance", "Frontend"],
+      category: "React",
     },
     {
       title: "Building Scalable APIs with Node.js",
       summary:
-        "Discover best practices for building robust, scalable APIs with Node.js and Express. Includes patterns for rate limiting, request validation, and modular architecture.",
+        "Best practices for building robust, scalable APIs with Node.js and Express: request validation, rate limiting, pagination, and error handling patterns.",
       publishedDate: new Date("2024-07-01"),
-      tags: ["Node.js", "Backend", "API"],
-      type: "Tech",
+      url: "/blog/scalable-nodejs-apis",
+      tags: ["Node.js", "API", "Backend"],
+      category: "APIs",
     },
     {
       title: "Journey into Freelancing",
       summary:
-        "Freelancing changed my perspective on work-life balance and client communication. Here's what I learned in my first year as a freelancer.",
+        "Lessons learned in the first year of freelancing: client communication, pricing strategies, time management, and building a repeatable onboarding process.",
       publishedDate: new Date("2024-06-01"),
-      tags: ["Career", "Freelance"],
-      type: "Personal",
+      url: "/blog/journey-into-freelancing",
+      tags: ["Career", "Freelance", "Productivity"],
+      category: "Career",
+    },
+    {
+      title: "Deploying Node.js Apps to AWS (Practical Guide)",
+      summary:
+        "A step-by-step guide to deploy Node.js applications on AWS using ECS, Fargate, and S3 for static assets — includes CI/CD tips and cost-saving suggestions.",
+      publishedDate: new Date("2024-09-01"),
+      url: "/blog/deploying-nodejs-aws",
+      tags: ["AWS", "DevOps", "Node.js"],
+      category: "DevOps",
+    },
+    {
+      title: "Accessibility-first UI Design",
+      summary:
+        "Practical accessibility techniques for web UIs: semantic HTML, ARIA where needed, keyboard navigation, color contrast, and testing strategies.",
+      publishedDate: new Date("2024-05-15"),
+      url: "/blog/accessibility-ui-design",
+      tags: ["Accessibility", "UX", "Frontend"],
+      category: "UX",
+    },
+    {
+      title: "Migrating from REST to GraphQL: A Practical Approach",
+      summary:
+        "When and how to introduce GraphQL in an existing REST codebase, schema design tips, performance considerations, and incremental migration patterns.",
+      publishedDate: new Date("2024-04-10"),
+      url: "/blog/migrating-rest-to-graphql",
+      tags: ["GraphQL", "API", "Backend"],
+      category: "Backend",
     },
   ]);
 

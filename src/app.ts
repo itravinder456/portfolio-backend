@@ -19,7 +19,7 @@ dotenv.config();
 connectDB();
 const app = express();
 
-// seed();
+// seed(); // Be careful with this in production!
 
 // middleware
 app.use(cors());
@@ -36,5 +36,22 @@ app.use("/education", educationRoutes);
 app.use("/profile", profileRoutes);
 app.use("/achievements", achievementRoutes);
 app.use("/contactMessages", contactMessagesRoutes);
+
+app.use("/", (req, res) => {
+  res.send("API is running...");
+});
+
+// error handling middleware
+app.use(
+  (
+    err: any,
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
+  ) => {
+    console.error(err.stack);
+    res.status(500).send({ message: err.message });
+  }
+);
 
 export default app;

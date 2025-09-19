@@ -50,6 +50,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+src/seed.ts
+
 # Build / output
 dist/
 build/
