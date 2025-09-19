@@ -4,6 +4,7 @@ export interface IMessage extends Document {
   name: string;
   email: string;
   message: string;
+  ip?: string;
   receivedAt: Date;
   createdAt: Date;
   updatedAt: Date;
@@ -14,6 +15,7 @@ const MessageSchema = new Schema<IMessage>(
     name: { type: String, required: true },
     email: { type: String, required: true },
     message: { type: String, required: true },
+    ip: { type: String }, // client IP address
     receivedAt: { type: Date, required: true, default: Date.now },
   },
   { timestamps: true }

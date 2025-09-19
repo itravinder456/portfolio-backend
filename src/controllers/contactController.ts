@@ -3,6 +3,30 @@ import nodemailer from "nodemailer";
 import mongoose from "mongoose";
 import Message from "../models/Message";
 
+// helper to determine client IP (handles proxies / x-forwarded-for)
+function getClientIp(req: Request): string {
+  const xff = req.headers["x-forwarded-for"];
+  let ip = "";
+
+  if (typeof xff === "string" && xff.length) {
+    ip = xff.split(",")[0].trim();
+  }
+
+  if (!ip && (req.ip || (req as any).ips?.length)) {
+    // req.ip provided by Express (may be the last entry in XFF if trust proxy set)
+    ip = req.ip || (req as any).ips?.[0];
+  }
+
+  if (!ip && req.socket && req.socket.remoteAddress) {
+    ip = req.socket.remoteAddress;
+  }
+
+  // normalize IPv4 mapped addresses like ::ffff:1.2.3.4
+  if (ip?.startsWith("::ffff:")) ip = ip.replace("::ffff:", "");
+
+  return ip || "";
+}
+
 function buildEmailTemplate({
   name,
   email,
@@ -81,18 +105,17 @@ export const sendContactMessage = async (req: Request, res: Response) => {
       if (!uri) {
         return res.status(500).json({ error: "MONGODB_URI not configured" });
       }
-      await mongoose.connect(uri, {
-        // recommended options if using older mongoose versions; recent versions auto-handle
-        // keep these minimal to avoid TS issues; adjust if your project already sets options elsewhere
-        // useUnifiedTopology and useNewUrlParser are default in modern mongoose
-      } as any);
+      await mongoose.connect(uri, {} as any);
     }
+
+    const clientIp = getClientIp(req);
 
     // store message in MongoDB before sending email (so messages persist even if email fails)
     const saved = await Message.create({
       name,
       email,
       message,
+      ip: clientIp,
       receivedAt: new Date(),
     });
 
@@ -115,7 +138,7 @@ export const sendContactMessage = async (req: Request, res: Response) => {
     await transporter.sendMail({
       from: process.env.SENDER_EMAIL || process.env.SMTP_USER,
       to: process.env.CONTACT_EMAIL,
-      cc: email || process.env.SENDER_EMAIL, // CC the sender
+      cc: email || process.env.SENDER_EMAIL,
       subject: template.subject,
       text: template.text,
       html: template.html,
@@ -126,6 +149,7 @@ export const sendContactMessage = async (req: Request, res: Response) => {
       success: true,
       message: "Message sent successfully!",
       id: saved._id,
+      ip: clientIp,
     });
   } catch (error) {
     console.error("Failed to send contact message:", error);
