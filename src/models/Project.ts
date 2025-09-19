@@ -22,7 +22,7 @@ const ProjectSchema: Schema = new Schema(
     techStack: [String],
     role: String,
     duration: String,
-    type: { type: String, enum: ["Professional", "Personal"] },
+    type: { type: String, enum: ["Professional", "Personal", "Outsourced"] },
   },
   { timestamps: true }
 );

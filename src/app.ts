@@ -1,14 +1,14 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import rateLimit from "express-rate-limit";
+import rateLimit, { ipKeyGenerator } from "express-rate-limit";
 
 // routes
 import blogRoutes from "./routes/blogs";
 import projectRoutes from "./routes/projects";
 import contactRoutes from "./routes/contact";
 import connectDB from "./config/db";
-import { seed } from "./seed";
+// import { seed } from "./seed";
 import skillRoutes from "./routes/skills";
 import experienceRoutes from "./routes/experiences";
 import educationRoutes from "./routes/education";
@@ -19,6 +19,8 @@ import contactMessagesRoutes from "./routes/contactMessages";
 dotenv.config();
 connectDB();
 const app = express();
+
+// seed().catch(console.error);
 
 // Basic global rate limiter
 const GLOBAL_WINDOW_MS =
@@ -47,12 +49,20 @@ const contactLimiter = rateLimit({
     error: `Too many contact attempts. Please wait ${CONTACT_WINDOW_MINUTES} minutes before trying again.`,
   },
   keyGenerator: (req) => {
-    // use IP by default; you can switch to req.body.email for stricter per-email limiting
-    return req.ip ?? "";
+    // Prefer per-email limiting for contact form submissions when present (case-insensitive)
+    try {
+      const email =
+        req.method === "POST" && (req.body as any)?.email
+          ? String((req.body as any).email).toLowerCase()
+          : null;
+      if (email) return email;
+    } catch (e) {
+      /* ignore body parse errors and fallback to IP */
+    }
+    // Use express-rate-limit helper to correctly handle IPv4/IPv6 addresses
+    return ipKeyGenerator(req.ip || "");
   },
 });
-
-// seed(); // Be careful with this in production!
 
 // middleware
 app.use(cors());

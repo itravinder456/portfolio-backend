@@ -31,7 +31,7 @@ export async function seed() {
       category: "Frontend",
       proficiency: "Expert",
       isTopSkill: true,
-      level: "90",
+      level: "95",
     },
     {
       name: "Node.js",
@@ -60,12 +60,6 @@ export async function seed() {
       category: "Frontend",
       proficiency: "Advanced",
       level: "80",
-    },
-    {
-      name: "JavaScript (ES6+)",
-      category: "Frontend",
-      proficiency: "Expert",
-      level: "95",
     },
 
     // Backend
@@ -233,6 +227,49 @@ export async function seed() {
   await Project.insertMany([
     // Professional Projects
     {
+      title: "Sagemaker Project Management Platform",
+      description:
+        "Developed a comprehensive platform for managing AWS Sagemaker projects across multiple lines of business within the organization. The solution features an intuitive UI for team and project administration, enabling seamless collaboration, access control, and resource tracking. Additionally, architected and integrated a Multi-Agentic application to automate support workflows, including ticket management and automated Jira ticket creation, significantly improving operational efficiency and cross-team communication.",
+      techStack: [
+        "React.js",
+        "DynamoDB",
+        "AWS",
+        "Sagemaker",
+        "Docker",
+        "Jira API",
+        "Confluence API",
+      ],
+      role: "Full-Stack Developer / Machine Learning Engineer",
+      duration: "1 Year (2024-25)",
+      type: "Professional",
+    },
+    {
+      title: "CCommerce – E-commerce Platform",
+      description:
+        "An e-commerce platform that provides a seamless shopping experience with features like product catalogs, shopping carts, and secure payment gateways. Provides admin dashboards for managing products, orders, and users. Includes a driver routing system for efficient deliveries.",
+      techStack: [
+        "Node.js",
+        "Express.js",
+        "MySQL",
+        "MongoDB",
+        "AWS-Lambda",
+        "AWS-CloudFormation",
+        "Sendgrid",
+      ],
+      role: "Backend Developer",
+      duration: "3 Months (2023)",
+      type: "Outsourced",
+    },
+    {
+      title: "Taskolly – Task Management App",
+      description:
+        "A task management application designed to help users organize, prioritize, and track their tasks efficiently with features like deadlines, reminders, and collaboration.",
+      techStack: ["React.js", "Node.js", "MongoDB", "Express.js", "Redux"],
+      role: "Full-Stack Developer",
+      duration: "6 Months (2023-24)",
+      type: "Outsourced",
+    },
+    {
       title: "Fleet Manager – GE HealthCare (PCS)",
       description:
         "Fleet Manager helps healthcare facilities overcome operational challenges. It supports patient monitoring across devices, consolidates service strategies, and improves uptime, processes, and patient care.",
@@ -260,38 +297,39 @@ export async function seed() {
     {
       title: "Notfii – Community App",
       description:
-        "Notfii is a package tracking software designed for residential communities, universities, and corporate campuses, streamlining delivery notifications and community interactions.",
-      techStack: ["React.js", "Node.js", "MongoDB", "MySQL"],
+        "Notfii is a package tracking software designed for residential communities, universities, and corporate campuses, streamlining delivery notifications and community interactions for residents and administrators.",
+      techStack: [
+        "React.js",
+        "Node.js",
+        "MongoDB",
+        "MySQL",
+        "Sendgrid",
+        "Amazon-SQS",
+      ],
       role: "Full-Stack Developer",
       duration: "1 Year (2021)",
       type: "Professional",
     },
 
     // Personal Projects
+
     {
       title: "Portfolio Website",
       description:
         "Designed and developed my personal portfolio website to showcase projects, experience, and skills with an elegant modern UI.",
       techStack: ["Next.js", "Tailwind", "Node.js"],
       role: "Full-Stack Developer",
-      duration: "2023",
+      duration: "2025",
       type: "Personal",
     },
     {
-      title: "AI-Powered Report Manager",
+      title: "Slot Booker - Appointment Scheduling App",
       description:
-        "A report management web app with role-based access, notifications, file uploads to AWS S3, and AI-driven analytics for enterprise usage.",
-      techStack: [
-        "React",
-        "Node.js",
-        "MongoDB",
-        "DynamoDB",
-        "Firebase",
-        "SendGrid",
-      ],
+        "Built a slot-booking web app for a healthcare client with React, Express, and MySQL, enabling real-time scheduling. Features include user authentication, admin dashboards, email notifications, and calendar integration.",
+      techStack: ["React", "Node.js", "MySQL", "Express.js", "Redux", "AWS"],
       role: "MERN Developer",
-      duration: "2024",
-      type: "Personal",
+      duration: "2025",
+      type: "Outsourced",
     },
   ]);
 
@@ -370,18 +408,35 @@ export async function seed() {
     happyClients: 4,
     awardsWon: 4,
     summary:
-      "Experienced MERN stack developer with 5+ years of expertise in building scalable web applications. Passionate about learning new technologies and solving complex problems.",
+      "Experienced MERN stack developer with 6+ years of expertise in building scalable web applications. Passionate about learning new technologies and solving complex problems.",
   });
 
-  // Achievements
+  // Achievements / Certifications
   await Achievement.deleteMany({});
   await Achievement.insertMany([
+    {
+      title: "Ace of Delivery",
+      description:
+        "Client award for contributions to the Agentic application — recognized for transforming complex UI requirements into a polished, production-ready user interface.",
+      date: new Date("2025-09-10"), // update with actual date from certificate/image if available
+      company: "EPAM",
+      type: "Award",
+    },
+    {
+      title: "Team of Stars",
+      description:
+        "Team award from EPAM for outstanding demo delivery that led the client to select our solution over other vendors and award the full project.",
+      date: new Date("2025-01-23"), // update with actual date from certificate/image if available
+      company: "EPAM",
+      type: "Award",
+    },
     {
       title: "A-TEAM SPOT ON",
       description:
         "Awarded for delivering the product to the client ahead of schedule.",
       date: new Date("2023-06-01"),
       company: "LTIMindtree",
+      type: "Award",
     },
     {
       title: "2× Problem Solver Gracias",
@@ -389,17 +444,126 @@ export async function seed() {
         "Recognized for solving critical hotfixes swiftly at LTIMindtree.",
       date: new Date("2022-11-01"),
       company: "LTIMindtree",
+      type: "Award",
     },
     {
       title: "Super Crew",
       description: "Honored for outstanding teamwork and delivery excellence.",
       date: new Date("2021-09-01"),
       company: "LTIMindtree",
+      type: "Award",
+    },
+    {
+      title:
+        "Certificate: Testing React with Jest and React Testing Library (RTL)",
+      description:
+        "Completed Udemy course 'Testing React with Jest and React Testing Library' instructed by Bonnie Schulkin. Certificate ID: RTL-UC-5605. Course length: 8 hours.",
+      date: new Date("2023-02-22"),
+      company: "Udemy",
+      type: "Achievement",
+    },
+
+    // Additional professional / online certifications
+    {
+      title: "Certificate: Generative AI Fundamentals",
+      description:
+        "Completed an introductory Generative AI fundamentals course.",
+      date: new Date("2025-04-01"),
+      company: "Linkedin",
+      type: "Achievement",
+    },
+    {
+      title: "Certificate: React.js (Advanced)",
+      description:
+        "Completed advanced React coursework: hooks, performance, testing.",
+      date: new Date("2023-03-15"),
+      company: "Linkedin",
+      type: "Achievement",
+    },
+    {
+      title: "Certificate: Node.js Developer",
+      description:
+        "Completed Node.js backend development course: APIs, auth, testing.",
+      date: new Date("2023-05-01"),
+      company: "Udemy",
+      type: "Achievement",
+    },
+
+    // LinkedIn Skill Assessments (inserted into achievements for now)
+    {
+      title: "LinkedIn Skill Assessment: Front-end Development (Verified)",
+      description:
+        "Passed LinkedIn Skill Assessment for Front-end Development.",
+      date: "",
+      company: "LinkedIn Skill Assessments",
+      type: "Achievement",
+    },
+    {
+      title: "LinkedIn Skill Assessment: React.js (Verified)",
+      description: "Passed LinkedIn Skill Assessment for React.js.",
+      date: "",
+      company: "LinkedIn Skill Assessments",
+      type: "Achievement",
+    },
+    {
+      title: "LinkedIn Skill Assessment: Node.js (Verified)",
+      description: "Passed LinkedIn Skill Assessment for Node.js.",
+      date: "",
+      company: "LinkedIn Skill Assessments",
+      type: "Achievement",
+    },
+    {
+      title: "LinkedIn Skill Assessment: MySQL (Verified)",
+      description: "Passed LinkedIn Skill Assessment for MySQL.",
+      date: "",
+      company: "LinkedIn Skill Assessments",
+      type: "Achievement",
+    },
+    {
+      title: "LinkedIn Skill Assessment: HTML (Verified)",
+      description: "Passed LinkedIn Skill Assessment for HTML.",
+      date: "",
+      company: "LinkedIn Skill Assessments",
+      type: "Achievement",
+    },
+    {
+      title: "LinkedIn Skill Assessment: JavaScript (Verified)",
+      description: "Passed LinkedIn Skill Assessment for JavaScript.",
+      date: "",
+      company: "LinkedIn Skill Assessments",
+      type: "Achievement",
+    },
+    {
+      title: "LinkedIn Skill Assessment: CSS (Verified)",
+      description: "Passed LinkedIn Skill Assessment for CSS.",
+      date: "",
+      company: "LinkedIn Skill Assessments",
+      type: "Achievement",
+    },
+    {
+      title: "LinkedIn Skill Assessment: Git (Verified)",
+      description: "Passed LinkedIn Skill Assessment for Git.",
+      date: "",
+      company: "LinkedIn Skill Assessments",
+      type: "Achievement",
+    },
+    {
+      title: "LinkedIn Skill Assessment: jQuery (Verified)",
+      description: "Passed LinkedIn Skill Assessment for jQuery.",
+      date: "",
+      company: "LinkedIn Skill Assessments",
+      type: "Achievement",
+    },
+    {
+      title: "Architecting Scalable Cloud Solutions",
+      description:
+        "Completed a course on designing scalable applications on cloud platforms at Red Hat Academy@GNI",
+      date: new Date("2018-09-12"),
+      company: "Major Project - Red Hat Academy@GNI",
+      type: "Achievement",
     },
   ]);
 
   console.log("Database seeded!");
   await mongoose.disconnect();
 }
-
-// seed().catch(console.error);
