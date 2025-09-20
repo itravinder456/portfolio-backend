@@ -66,7 +66,7 @@ const contactLimiter = rateLimit({
       /* ignore body parse errors and fallback to IP */
     }
     // Always return a string (fallback to IP if email is not present)
-    return req.ip || "";
+    return ipKeyGenerator(req.ip || "");
   },
 });
 
