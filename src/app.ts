@@ -20,12 +20,18 @@ dotenv.config();
 connectDB();
 const app = express();
 
-// seed().catch(console.error);
+// trust proxy when behind a reverse proxy/load balancer (set TRUST_PROXY=true in env)
+app.set(
+  "trust proxy",
+  process.env.TRUST_PROXY
+    ? process.env.TRUST_PROXY === "true"
+    : process.env.NODE_ENV === "production"
+);
 
 // Basic global rate limiter
 const GLOBAL_WINDOW_MS =
-  Number(process.env.GLOBAL_RATE_WINDOW_MS) || 15 * 60 * 1000; // 15 minutes
-const GLOBAL_MAX = Number(process.env.GLOBAL_RATE_MAX) || 300; // max requests per window per IP
+  Number(process.env.GLOBAL_RATE_WINDOW_MINUTES) * 60 * 1000;
+const GLOBAL_MAX = Number(process.env.GLOBAL_RATE_MAX);
 
 const globalLimiter = rateLimit({
   windowMs: GLOBAL_WINDOW_MS,
@@ -37,11 +43,11 @@ const globalLimiter = rateLimit({
 
 // Strict contact limiter (prevents rapid repeated contact submissions)
 const CONTACT_WINDOW_MINUTES =
-  Number(process.env.CONTACT_RATE_LIMIT_MINUTES) || 5; // minutes
-const CONTACT_MAX = Number(process.env.CONTACT_RATE_LIMIT_COUNT) || 2; // max submissions per window per IP
+  Number(process.env.CONTACT_RATE_LIMIT_MINUTES) * 60 * 1000; // minutes
+const CONTACT_MAX = Number(process.env.CONTACT_RATE_LIMIT_COUNT); // max submissions per window per IP
 
 const contactLimiter = rateLimit({
-  windowMs: CONTACT_WINDOW_MINUTES * 60 * 1000,
+  windowMs: CONTACT_WINDOW_MINUTES,
   max: CONTACT_MAX,
   standardHeaders: true,
   legacyHeaders: false,
@@ -59,8 +65,8 @@ const contactLimiter = rateLimit({
     } catch (e) {
       /* ignore body parse errors and fallback to IP */
     }
-    // Use express-rate-limit helper to correctly handle IPv4/IPv6 addresses
-    return ipKeyGenerator(req.ip || "");
+    // Always return a string (fallback to IP if email is not present)
+    return req.ip || "";
   },
 });
 
