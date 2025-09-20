@@ -9,6 +9,7 @@ import Project from "./models/Project";
 import Blog from "./models/Blog";
 import Profile from "./models/Profile";
 import Achievement from "./models/Achievement";
+import experiences from "./routes/experiences";
 
 dotenv.config();
 
@@ -24,6 +25,8 @@ export async function seed() {
       category: "Frontend",
       proficiency: "Expert",
       isTopSkill: true,
+      description:
+        "Extensive experience building dynamic, responsive UIs with React.js, including hooks, context, and state management.",
       level: "95",
     },
     {
@@ -31,6 +34,8 @@ export async function seed() {
       category: "Frontend",
       proficiency: "Expert",
       isTopSkill: true,
+      description:
+        "Proficient in modern JavaScript (ES6+) features and best practices for building scalable web applications.",
       level: "95",
     },
     {
@@ -38,6 +43,8 @@ export async function seed() {
       category: "Backend",
       proficiency: "Expert",
       isTopSkill: true,
+      description:
+        "Skilled in building RESTful APIs and backend services using Node.js and Express.js.",
       level: "90",
     },
     {
@@ -45,6 +52,8 @@ export async function seed() {
       category: "Cloud",
       proficiency: "Intermediate",
       isTopSkill: true,
+      description:
+        "Experience deploying and managing applications on AWS services like S3, EC2, API Gateway, SageMaker and Lambda.",
       level: "75",
     },
 
@@ -135,7 +144,7 @@ export async function seed() {
     {
       company: "EPAM",
       location: "Hyderabad, India",
-      technologies: ["MERN Stack", "JavaScript", "TypeScript"],
+      technologies: ["MERN Stack", "AWS", "JavaScript", "TypeScript"],
       roles: [
         {
           role: "Senior Software Engineer",
@@ -148,7 +157,7 @@ export async function seed() {
     {
       company: "LTIMindtree",
       location: "Hyderabad, India",
-      technologies: ["MERN Stack", "Agile"],
+      technologies: ["MERN Stack", "AWS", "Agile"],
       roles: [
         {
           role: "Specialist - Software Engineering",
@@ -191,11 +200,12 @@ export async function seed() {
     {
       degree: "Bachelor of Technology",
       field: "Computer Science & Engineering",
-      institution: "Guru Nanak Institution's Technical Campus, Hyderabad",
+      institution:
+        "JNTUH - Guru Nanak Institution's Technical Campus, Hyderabad",
       location: "Hyderabad, India",
       startYear: 2016,
       endYear: 2019,
-      percentage: undefined,
+      percentage: 68,
       description:
         "Focused on software engineering principles, system design, and full-stack development.",
     },
@@ -206,18 +216,18 @@ export async function seed() {
       location: "Hyderabad, India",
       startYear: 2013,
       endYear: 2016,
-      percentage: undefined,
+      percentage: 74,
       description:
         "Built a strong foundation in computer science fundamentals and applied programming.",
     },
     {
-      degree: "Schooling",
-      field: "Science",
+      degree: "High School",
+      field: "Secondary School Certificate (SSC)",
       institution: "ZPHS Pochampally",
       location: "Pochampally, Nalgonda",
       startYear: 2013,
       endYear: 2013,
-      percentage: undefined,
+      percentage: 88,
       description: "Completed high school education with focus on science.",
     },
   ]);
@@ -397,18 +407,34 @@ export async function seed() {
   await Profile.create({
     firstName: "Ravinder",
     lastName: "Varikuppala",
+    title: "MERN Stack Developer",
     nationality: "Indian",
     freelance: "Available",
-    phone: "+91 9512955330",
+    phone: "+91 9515295530",
     email: "it.ravinder.456@gmail.com",
     address: "Hyderabad, India",
     languages: ["English", "Hindi", "Telugu"],
     yearsOfExperience: 6,
     completedProjects: 11,
     happyClients: 4,
+    linkedinUrl: "https://www.linkedin.com/in/varikuppala-ravinder",
+    githubUrl: "https://github.com/itravinder456?tab=repositories",
     awardsWon: 4,
-    summary:
-      "Experienced MERN stack developer with 6+ years of expertise in building scalable web applications. Passionate about learning new technologies and solving complex problems.",
+    homePageSummary: `Crafting scalable, modern, and user-friendly web applications with over 6 years of hands-on experience.
+Skilled in <strong>React.js, Node.js, Express.js, MongoDB</strong>, I build seamless user experiences and robust backend systems.`,
+    homePageSkills: [
+      "React.js",
+      "TypeScript",
+      "Node.js",
+      "AWS",
+      "System Design",
+    ],
+    linkedin: "varikuppala-ravinder",
+    github: "itravinder456",
+    contactPageSummary:
+      "I’d love to collaborate on exciting projects or discuss opportunities. Drop me a message!",
+    aboutPageSummary:
+      "I am a passionate MERN stack developer with a love for creating dynamic web applications.",
   });
 
   // Achievements / Certifications

@@ -16,6 +16,7 @@ const SkillSchema: Schema = new Schema(
     proficiency: String,
     level: String,
     iconUrl: String,
+    description: String,
     isTopSkill: { type: Boolean, default: false },
   },
   { timestamps: true }
