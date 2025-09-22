@@ -92,7 +92,7 @@ function buildEmailTemplate({
 }
 
 export const sendContactMessage = async (req: Request, res: Response) => {
-  const { name, email, message } = req.body;
+  const { name, email, message, cc } = req.body;
 
   if (!name || !email || !message) {
     return res.status(400).json({ error: "All fields are required" });
@@ -138,7 +138,7 @@ export const sendContactMessage = async (req: Request, res: Response) => {
     await transporter.sendMail({
       from: process.env.SENDER_EMAIL || process.env.SMTP_USER,
       to: process.env.CONTACT_EMAIL,
-      cc: email || process.env.SENDER_EMAIL,
+      cc: cc ? email : "",
       subject: template.subject,
       text: template.text,
       html: template.html,

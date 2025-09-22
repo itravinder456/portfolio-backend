@@ -20,13 +20,15 @@ dotenv.config();
 connectDB();
 const app = express();
 
+// seed();
+
 // trust proxy when behind a reverse proxy/load balancer (set TRUST_PROXY=true in env)
-app.set(
-  "trust proxy",
-  process.env.TRUST_PROXY
-    ? process.env.TRUST_PROXY === "true"
-    : process.env.NODE_ENV === "production"
-);
+// app.set(
+//   "trust proxy",
+//   process.env.TRUST_PROXY
+//     ? process.env.TRUST_PROXY === "true"
+//     : process.env.NODE_ENV === "production"
+// );
 
 // Basic global rate limiter
 const GLOBAL_WINDOW_MS =

@@ -59,16 +59,75 @@ export async function seed() {
 
     // Frontend
     {
+      name: "HTML5 & CSS3",
+      category: "Frontend",
+      proficiency: "Expert",
+      level: "95",
+    },
+    {
       name: "Next.js",
       category: "Frontend",
       proficiency: "Advanced",
       level: "85",
     },
     {
+      name: "TypeScript",
+      category: "Frontend",
+      proficiency: "Advanced",
+      level: "85",
+    },
+
+    {
+      name: "Material-UI",
+      category: "Frontend",
+      proficiency: "Intermediate",
+      level: "80",
+    },
+    {
       name: "Tailwind CSS",
       category: "Frontend",
       proficiency: "Advanced",
-      level: "80",
+      level: "60",
+    },
+    {
+      name: "React Native",
+      category: "Frontend",
+      proficiency: "Intermediate",
+      level: "50",
+    },
+    {
+      name: "Socket-IO",
+      category: "Frontend",
+      proficiency: "Intermediate",
+      level: "60",
+    },
+
+    // State Management
+    {
+      name: "Redux",
+      category: "State Management",
+      proficiency: "Advanced",
+      level: "90",
+    },
+    {
+      name: "Context API",
+      category: "State Management",
+      proficiency: "Advanced",
+      level: "90",
+    },
+    {
+      name: "React-query",
+      category: "State Management",
+      proficiency: "Advanced",
+      level: "90",
+    },
+    {
+      name: "Hooks and custom hooks",
+      category: "State Management",
+      proficiency: "Expert",
+      level: "95",
+      description:
+        "Proficient in creating and using custom hooks for state management and side effects.",
     },
 
     // Backend
@@ -85,6 +144,12 @@ export async function seed() {
       level: "90",
     },
     {
+      name: "System Design",
+      category: "Backend",
+      proficiency: "Advanced",
+      level: "90",
+    },
+    {
       name: "GraphQL",
       category: "Backend",
       proficiency: "Intermediate",
@@ -93,27 +158,34 @@ export async function seed() {
 
     // Database
     {
-      name: "MongoDB",
-      category: "Database",
-      proficiency: "Expert",
-      level: "90",
-    },
-    {
       name: "MySQL",
       category: "Database",
       proficiency: "Advanced",
-      level: "85",
+      level: "90",
     },
     {
-      name: "PostgreSQL",
+      name: "MongoDB",
+      category: "Database",
+      proficiency: "Expert",
+      level: "75",
+    },
+
+    {
+      name: "DynamoDB",
       category: "Database",
       proficiency: "Intermediate",
-      level: "75",
+      level: "70",
     },
 
     // Tools & Others
     {
-      name: "Git & GitHub",
+      name: "Webpack & Babel",
+      category: "Tools",
+      proficiency: "Intermediate",
+      level: "70",
+    },
+    {
+      name: "Git (GitHub, GitLab)",
       category: "Tools",
       proficiency: "Expert",
       level: "95",
@@ -125,16 +197,84 @@ export async function seed() {
       level: "70",
     },
     {
+      name: "Jira & Confluence",
+      category: "Tools",
+      proficiency: "Advanced",
+      level: "80",
+      description:
+        "Experienced in using Jira for project management and Confluence for documentation.",
+    },
+    {
+      name: "Rally",
+      category: "Tools",
+      proficiency: "Advanced",
+      level: "80",
+      description:
+        "Experienced in using Rally for project management and tracking.",
+    },
+
+    // Cloud
+    {
+      name: "CI/CD (GitHub Actions, Jenkins)",
+      category: "Cloud",
+      proficiency: "Intermediate",
+      level: "70",
+      description:
+        "Familiar with CI/CD concepts and tools like GitHub Actions and Jenkins.",
+    },
+    {
       name: "AWS (S3, EC2)",
       category: "Cloud",
       proficiency: "Intermediate",
       level: "75",
     },
     {
+      name: "AWS Lambda",
+      category: "Cloud",
+      proficiency: "Advanced",
+      level: "70",
+    },
+    {
+      name: "AWS API Gateway",
+      category: "Cloud",
+      proficiency: "Intermediate",
+      level: "70",
+    },
+    {
+      name: "AWS CloudFormation",
+      category: "Cloud",
+      proficiency: "Intermediate",
+      level: "60",
+    },
+    {
+      name: "AWS Sagemaker",
+      category: "Cloud",
+      proficiency: "Intermediate",
+      level: "50",
+    },
+    {
+      name: "SendGrid",
+      category: "Tools",
+      proficiency: "Intermediate",
+      level: "70",
+    },
+    {
       name: "Firebase",
       category: "Tools",
       proficiency: "Advanced",
       level: "80",
+    },
+    {
+      name: "Jest",
+      category: "Testing",
+      proficiency: "Intermediate",
+      level: "80",
+    },
+    {
+      name: "Mocha & Chai",
+      category: "Testing",
+      proficiency: "Intermediate",
+      level: "50",
     },
   ]);
 
@@ -250,7 +390,7 @@ export async function seed() {
         "Confluence API",
       ],
       role: "Full-Stack Developer / Machine Learning Engineer",
-      duration: "1 Year (2024-25)",
+      duration: "2024-Present",
       type: "Professional",
     },
     {
@@ -285,7 +425,7 @@ export async function seed() {
         "Fleet Manager helps healthcare facilities overcome operational challenges. It supports patient monitoring across devices, consolidates service strategies, and improves uptime, processes, and patient care.",
       techStack: ["React.js", "Node.js", "Redux.js", "Jest", "MUI"],
       role: "Full-Stack Developer",
-      duration: "2 Years (2022-24)",
+      duration: "2022-24",
       type: "Professional",
     },
     {
@@ -301,7 +441,7 @@ export async function seed() {
         "AntD",
       ],
       role: "Full-Stack Developer",
-      duration: "1 Year (2021-22)",
+      duration: "2021-22",
       type: "Professional",
     },
     {
@@ -317,7 +457,16 @@ export async function seed() {
         "Amazon-SQS",
       ],
       role: "Full-Stack Developer",
-      duration: "1 Year (2021)",
+      duration: "2020-21",
+      type: "Professional",
+    },
+    {
+      title: "Ayurway-EMR Web Application",
+      description:
+        "Ayurway is an electronic medical records (EMR) web application designed for healthcare providers to manage patient information, appointments, and medical history.",
+      techStack: ["React.js", "Node.js", "MySQL", "Express.js", "Bootstrap"],
+      role: "Junior Developer",
+      duration: "2019-20",
       type: "Professional",
     },
 
@@ -416,10 +565,10 @@ export async function seed() {
     languages: ["English", "Hindi", "Telugu"],
     yearsOfExperience: 6,
     completedProjects: 11,
-    happyClients: 4,
+    happyClients: 6,
     linkedinUrl: "https://www.linkedin.com/in/varikuppala-ravinder",
     githubUrl: "https://github.com/itravinder456?tab=repositories",
-    awardsWon: 4,
+    awardsWon: 5,
     homePageSummary: `Crafting scalable, modern, and user-friendly web applications with over 6 years of hands-on experience.
 Skilled in <strong>React.js, Node.js, Express.js, MongoDB</strong>, I build seamless user experiences and robust backend systems.`,
     homePageSkills: [
