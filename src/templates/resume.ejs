@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title><%= profile.fullName %> - Resume</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        font-size: 12px;
+        line-height: 1.5;
+        color: #222;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: row;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 30%;
+        background: #f4f6f9;
+        padding: 16px;
+        box-sizing: border-box;
+        border-right: 2px solid #ddd;
+      }
+
+      .main {
+        width: 70%;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-size: 22px;
+        margin-bottom: 4px;
+      }
+
+      h2 {
+        font-size: 14px;
+        margin: 12px 0 6px 0;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 2px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      h3 {
+        font-size: 13px;
+        margin: 6px 0 2px 0;
+      }
+
+      p,
+      li {
+        margin: 2px 0;
+      }
+
+      ul {
+        margin: 4px 0 0 16px;
+        padding: 0;
+      }
+
+      .contact p {
+        margin: 2px 0;
+        font-size: 11px;
+        color: #555;
+      }
+
+      .skills-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 8px;
+        font-size: 11px;
+      }
+
+      .skill {
+        background: #e8eef7;
+        padding: 3px 6px;
+        border-radius: 4px;
+      }
+
+      .exp-item {
+        margin-bottom: 12px;
+      }
+
+      .footer {
+        margin-top: 20px;
+        font-size: 10px;
+        color: #777;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <h1><%= profile.fullName %></h1>
+        <div class="contact">
+          <p><%= profile.title %></p>
+          <p><%= profile.email %></p>
+          <p><%= profile.phone %></p>
+          <% if (profile.location) { %>
+          <p><%= profile.location %></p>
+          <% } %> <% if (profile.linkedin) { %>
+          <p>LinkedIn: <%= profile.linkedin %></p>
+          <% } %> <% if (profile.github) { %>
+          <p>GitHub: <%= profile.github %></p>
+          <% } %>
+        </div>
+
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <% skills.forEach(skill => { %>
+          <span class="skill"><%= skill %></span>
+          <% }) %>
+        </div>
+
+        <% if (certifications.length) { %>
+        <h2>Certifications</h2>
+        <ul>
+          <% certifications.forEach(cert => { %>
+          <li><%= cert.title %> (<%= cert.company %>)</li>
+          <% }) %>
+        </ul>
+        <% } %>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main">
+        <% if (profile.summary) { %>
+        <h2>Summary</h2>
+        <p><%= profile.summary %></p>
+        <% } %> <% if (experiencesProcessed.length) { %>
+        <h2>Experience</h2>
+        <% experiencesProcessed.forEach(exp => { %>
+        <div class="exp-item">
+          <h3>
+            <%= exp.company %>
+            <span style="font-size: 11px">(<%= exp.years %>)</span>
+          </h3>
+          <p><%= exp.rolesLine %></p>
+          <p><%= exp.techsLine %></p>
+        </div>
+        <% }) %> <% } %> <% if (projects.length) { %>
+        <h2>Projects</h2>
+        <% projects.forEach(prj => { %>
+        <div class="exp-item">
+          <h3><%= prj.title %></h3>
+          <p><%= prj.description %></p>
+          <% if (prj.techStack) { %>
+          <p><strong>Tech:</strong> <%= prj.techStack %></p>
+          <% } %>
+        </div>
+        <% }) %> <% } %> <% if (education.length) { %>
+        <h2>Education</h2>
+        <% education.forEach(edu => { %>
+        <div class="exp-item">
+          <h3><%= edu.institution %></h3>
+          <p><%= edu.degree %> (<%= edu.startDate %> - <%= edu.endDate %>)</p>
+        </div>
+        <% }) %> <% } %>
+
+        <h2>Achievements</h2>
+        <p><%= achievementsLine1 %></p>
+        <p><%= achievementsLine2 %></p>
+      </div>
+    </div>
+
+    <div class="footer">Generated on <%= generatedAt %></div>
+  </body>
+</html>

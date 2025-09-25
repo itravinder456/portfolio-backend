@@ -590,6 +590,22 @@ Skilled in <strong>React.js, Node.js, Express.js, MongoDB</strong>, I build seam
   await Achievement.deleteMany({});
   await Achievement.insertMany([
     {
+      title: "India Client Hero Award",
+      description:
+        "Awarded for exceptional client service and dedication, demonstrating a strong commitment to client satisfaction and project success.",
+      date: new Date("2025-09-24"), // update with actual date from certificate/image if available
+      company: "EPAM",
+      type: "Award",
+    },
+    {
+      title: "Delivery Excellence Award",
+      description:
+        "Awarded for exceptional performance and dedication in delivering high-quality solutions to clients, demonstrating a strong commitment to excellence in every project.",
+      date: new Date("2025-09-23"), // update with actual date from certificate/image if available
+      company: "EPAM",
+      type: "Award",
+    },
+    {
       title: "Ace of Delivery",
       description:
         "Client award for contributions to the Agentic application — recognized for transforming complex UI requirements into a polished, production-ready user interface.",
